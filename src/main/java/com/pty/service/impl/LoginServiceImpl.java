@@ -29,7 +29,7 @@ public class LoginServiceImpl implements LoginServcie {
     @Override
     public ResponseResult login(User user) {
         //AuthenticationManager authenticate进行用户认证
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUserName(),user.getPassword());
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUserName(),user.getUserPassword());
         Authentication authenticate = authenticationManager.authenticate(authenticationToken);
         //如果认证没通过，给出对应的提示
         if(Objects.isNull(authenticate)){
