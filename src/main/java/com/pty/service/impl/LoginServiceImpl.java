@@ -37,7 +37,7 @@ public class LoginServiceImpl implements LoginServcie {
         }
         //如果认证通过了，使用userid生成一个jwt jwt存入ResponseResult返回
         LoginUser loginUser = (LoginUser) authenticate.getPrincipal();
-        String userid = loginUser.getUser().getId().toString();
+        String userid = loginUser.getUser().getUserId().toString();
         String jwt = JwtUtil.createJWT(userid);
         Map<String,String> map = new HashMap<>();
         map.put("token",jwt);
@@ -51,7 +51,7 @@ public class LoginServiceImpl implements LoginServcie {
         //获取SecurityContextHolder中的用户id
         UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         LoginUser loginUser = (LoginUser) authentication.getPrincipal();
-        Long userid = loginUser.getUser().getId();
+        Integer userid = loginUser.getUser().getUserId();
         //删除redis中的值
         redisCache.deleteObject("login:"+userid);
         return new ResponseResult(200,"注销成功");
