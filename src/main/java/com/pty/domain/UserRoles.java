@@ -23,7 +23,6 @@ public class UserRoles implements Serializable {
     /**
      * 
      */
-    @TableId
     private Integer roleId;
 
     @TableField(exist = false)

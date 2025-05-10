@@ -23,7 +23,7 @@ public class RolePermissions implements Serializable {
     /**
      * 对应的权限
      */
-    @TableId
+
     private Integer permissionId;
 
     @TableField(exist = false)
